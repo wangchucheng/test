@@ -1,4 +1,4 @@
-# git remote add target https://${INPUT_TARGET_USERNAME}:${INPUT_TARGET_TOKEN}@${INPUT_TARGET_URL#https://}
+
 
 case "${GITHUB_EVENT_NAME}" in
   release)
@@ -9,6 +9,7 @@ case "${GITHUB_EVENT_NAME}" in
     rm -rf content
     cp -r ../exampleSite/config config
     cp -r ../exampleSite/content content
+    git remote add origin https://${INPUT_TARGET_USERNAME}:${INPUT_TARGET_TOKEN}@${INPUT_TARGET_URL#https://}
     git add .
     git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF}"
     git tag ${GITHUB_REF}
