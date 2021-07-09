@@ -1,9 +1,9 @@
 name: 'Hugo Eureka Starters Deploy'
 description: 'Deploy Hugo Eureka starters when the new version is released.'
 
-# branding:
-#   icon: upload-cloud
-#   color: gray-dark
+branding:
+  icon: folder-plus
+  color: gray-dark
 
 inputs:
   target_url:
@@ -21,7 +21,7 @@ runs:
     - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
       env:
-        INPUT_TARGET_URL: ${{ inputs.target-url }}
+        INPUT_TARGET_URL: ${{ inputs.target_url }}
         # INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
         # INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
         GITHUB_EVENT_REF: ${{ github.event.ref }}
