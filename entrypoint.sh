@@ -10,10 +10,10 @@ case "${GITHUB_EVENT_NAME}" in
     rm -rf content
     cp -r ../exampleSite/config config
     cp -r ../exampleSite/content content
-    sed "s/require github.com\/wangchucheng\/hugo-eureka .* \/\/ indirect/require github.com\/wangchucheng\/hugo-eureka ${GITHUB_REF##/} \/\/ indirect/g" go.mod
+    sed "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/${GITHUB_REF##*/}/g" go.mod
     git add .
-    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF##/}"
-    git tag ${GITHUB_REF##/}
+    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF##*/}"
+    git tag ${GITHUB_REF##*/}
     git push --all origin
     git push -f --tags origin
     ;;
