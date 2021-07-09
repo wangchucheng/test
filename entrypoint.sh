@@ -11,9 +11,9 @@ case "${GITHUB_EVENT_NAME}" in
     cp -r ../exampleSite/content content
     git config --global user.name ${INPUT_GIT_USERNAME}
     git config --global user.email ${INPUT_GIT_EMAIL}
-    git remote add origin https://${INPUT_TARGET_USERNAME}:${INPUT_TARGET_TOKEN}@${INPUT_TARGET_URL#https://}
+    git remote set-url origin https://${INPUT_TARGET_USERNAME}:${INPUT_TARGET_TOKEN}@${INPUT_TARGET_URL#https://}
     git add .
-    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF}"
+    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF#refs/tags/}"
     git tag ${GITHUB_REF}
     git push -f --all origin
     git push -f --tags origin
