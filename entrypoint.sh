@@ -15,8 +15,8 @@ case "${GITHUB_EVENT_NAME}" in
     git add .
     git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF#refs/tags/}"
     git tag ${GITHUB_REF}
-    git push -f --all origin
-    git push -f --tags origin
+    git push --all origin
+    git push --tags origin
     ;;
   *)
     break
