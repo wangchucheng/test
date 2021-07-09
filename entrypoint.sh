@@ -12,7 +12,7 @@ case "${GITHUB_EVENT_NAME}" in
     git config --global user.name ${INPUT_GIT_USERNAME}
     git config --global user.email ${INPUT_GIT_EMAIL}
     git add .
-    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF#'refs/tags/'}"
+    git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF##/}"
     git tag ${GITHUB_REF}
     git push --all origin
     git push -f --tags origin
