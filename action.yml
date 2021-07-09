@@ -9,12 +9,12 @@ inputs:
   target_url:
     description: 'Target Repo URL'
     required: true
-  # target-username:
-  #   description: 'Target Repo Username'
-  #   required: true
-  # target-token:
-  #   description: 'Target Token'
-  #   required: true
+  target_username:
+    description: 'Target Repo Username'
+    required: true
+  target_token:
+    description: 'Target Token'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -22,6 +22,6 @@ runs:
       shell: bash
       env:
         INPUT_TARGET_URL: ${{ inputs.target_url }}
-        # INPUT_TARGET_USERNAME: ${{ inputs.target-username }}
-        # INPUT_TARGET_TOKEN: ${{ inputs.target-token }}
+        INPUT_TARGET_USERNAME: ${{ inputs.target_username }}
+        INPUT_TARGET_TOKEN: ${{ inputs.target_token }}
         GITHUB_EVENT_REF: ${{ github.event.ref }}
