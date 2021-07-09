@@ -1,4 +1,5 @@
-
+git config --global user.name ${INPUT_GIT_USERNAME}
+git config --global user.email ${INPUT_GIT_EMAIL}
 
 case "${GITHUB_EVENT_NAME}" in
   release)
@@ -9,11 +10,8 @@ case "${GITHUB_EVENT_NAME}" in
     rm -rf content
     cp -r ../exampleSite/config config
     cp -r ../exampleSite/content content
-    git config --global user.name ${INPUT_GIT_USERNAME}
-    git config --global user.email ${INPUT_GIT_EMAIL}
+    sed "s/require github.com\/wangchucheng\/hugo-eureka .* \/\/ indirect/require github.com\/wangchucheng\/hugo-eureka ${GITHUB_REF##*/} \/\/ indirect/g" data/eureka.yaml
     git add .
-    echo ${GITHUB_REF}
-    echo ${GITHUB_REF##*/}
     git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF##*/}"
     git tag ${GITHUB_REF}
     git push --all origin
