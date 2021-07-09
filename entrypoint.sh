@@ -10,7 +10,7 @@ case "${GITHUB_EVENT_NAME}" in
     rm -rf content
     cp -r ../exampleSite/config config
     cp -r ../exampleSite/content content
-    sed "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/${GITHUB_REF##*/}/g" go.mod
+    sed -i "s/v[[:digit:]]\.[[:digit:]]\.[[:digit:]]/${GITHUB_REF##*/}/g" go.mod
     git add .
     git commit -m "refactor: upgrade to hugo eureka ${GITHUB_REF##*/}"
     git tag ${GITHUB_REF##*/}
