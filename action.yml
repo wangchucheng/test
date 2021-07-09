@@ -15,6 +15,12 @@ inputs:
   target_token:
     description: 'Target Token'
     required: true
+  git_username:
+    description: 'Git Username'
+    required: true
+  git_email:
+    description: 'Git Email'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -24,4 +30,6 @@ runs:
         INPUT_TARGET_URL: ${{ inputs.target_url }}
         INPUT_TARGET_USERNAME: ${{ inputs.target_username }}
         INPUT_TARGET_TOKEN: ${{ inputs.target_token }}
+        INPUT_GIT_USERNAME: ${{ inputs.git_username }}
+        INPUT_GIT_EMAIL: ${{ inputs.git_email }}
         GITHUB_EVENT_REF: ${{ github.event.ref }}
